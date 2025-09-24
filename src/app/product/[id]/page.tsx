@@ -2,22 +2,22 @@ import Image from "next/image";
 import Counter from "../../../component/Counter";
 import Product from "@/types/product";
 
-interface Props {
+interface PageProps {
   params: {
     id: string;
   };
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: PageProps) {
   const { id } = params;
   const res = await fetch(`https://fakestoreapi.com/products/${id}`);
   const product: Product = await res.json();
   return {
-    title: product.title, // ✅ بدل name
+    title: product.title,
   };
 }
 
-export default async function ProductPage({ params }: Props) {
+export default async function ProductPage({ params }: PageProps) {
   const { id } = params;
   const res = await fetch(`https://fakestoreapi.com/products/${id}`);
   const product: Product = await res.json();

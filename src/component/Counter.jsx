@@ -6,7 +6,7 @@ export default function Counter() {
   return (
     <div>
       <button
-        className="btn bg-amber-600 p-2 rounded text-white"
+        className="btn cursor-pointer bg-amber-600 p-2 rounded text-white"
         onClick={() => setCount(count + 1)}>
         {count}
       </button>

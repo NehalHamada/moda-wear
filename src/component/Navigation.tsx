@@ -9,7 +9,7 @@ const navItem = [
 
 export default function Navigation() {
   return (
-    <nav className="p-3">
+    <div className="p-2">
       {/* Links */}
       <ul className="flex gap-6">
         {navItem.map(({ name, href }) => (
@@ -18,6 +18,6 @@ export default function Navigation() {
           </li>
         ))}
       </ul>
-    </nav>
+    </div>
   );
 }
