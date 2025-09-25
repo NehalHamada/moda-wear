@@ -6,3 +6,5 @@ export default interface Product {
   image: string;
   category: string;
 }
+
+

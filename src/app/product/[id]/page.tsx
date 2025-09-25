@@ -1,15 +1,14 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Counter from "../../../component/Counter";
 import Product from "@/types/product";
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
+type Props = {
+  params: Promise<{ id: string }>;
+};
 
-export async function generateMetadata({ params }: PageProps) {
-  const { id } = params;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
   const res = await fetch(`https://fakestoreapi.com/products/${id}`);
   const product: Product = await res.json();
   return {
@@ -17,8 +16,8 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-export default async function ProductPage({ params }: PageProps) {
-  const { id } = params;
+export default async function ProductPage({ params }: Props) {
+  const { id } = await params;
   const res = await fetch(`https://fakestoreapi.com/products/${id}`);
   const product: Product = await res.json();
 

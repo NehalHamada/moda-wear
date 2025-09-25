@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "./global.css";
 import Navigation from "@/component/Navigation";
 import Logo from "@/component/Logo";
 import Footer from "@/component/Footer";
+import Providers from "./providers"; 
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -17,18 +18,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body className={`${geistMono.className} flex flex-col min-h-screen`}>
-        <nav className="flex justify-between items-center">
+        <nav className="flex justify-between items-center p-4 shadow">
           <Logo />
           <Navigation />
         </nav>
-        <main className="flex-1">{children}</main>
-        <footer>
+
+        <main className="flex-1">
+          <Providers>{children}</Providers>
+        </main>
+
+        <footer className="mt-6">
           <Footer />
         </footer>
       </body>
